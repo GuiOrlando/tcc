@@ -1,10 +1,13 @@
+import HomePage from "./HomePage";
+
 let pages = {
 
     routes: {
 
         Login: '/',
         CarroList: '/carros',
-        Signup: '/cadastro'
+        Signup: '/cadastro',
+        HomePage: '/Home',
     }
 
 }

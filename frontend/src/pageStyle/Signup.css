@@ -112,6 +112,7 @@
     height: 15px;
     color: #000;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .icon-return:hover {
