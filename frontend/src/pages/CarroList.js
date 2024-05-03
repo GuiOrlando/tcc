@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import CarroForm from '../components/CarroForm';
 import CarroEditForm from '../components/CarroEditForm';
-import '../pageStyle/CarroList.css' ;
+import '../pageStyle/CarroList.css';
 
 const CarroList = () => {
   const [carros, setCarros] = useState([]);
@@ -83,23 +83,23 @@ const CarroList = () => {
   };
 
   return (
-      <div className="carrolist-container" >
+    <div className="carrolist-container" >
 
-        <div className="list-title">
-          <h1>A L U C A R</h1>
+      <div className="list-title">
+        <h1>A L U C A R</h1>
 
-          {editFormVisible && editCarroData ? (
-        <div>
-          <CarroEditForm onSubmit={handleFormSubmit} carro={editCarroData} onClose={handleCloseForm} />
-        </div>
+        {editFormVisible && editCarroData ? (
+          <div>
+            <CarroEditForm onSubmit={handleFormSubmit} carro={editCarroData} onClose={handleCloseForm} />
+          </div>
         ) : (
-        <div>
-          <CarroForm onSubmit={handleFormSubmit} />
-        </div>
+          <div>
+            <CarroForm onSubmit={handleFormSubmit} />
+          </div>
         )}
 
-          <h2>Lista de Carros</h2>
-        </div>
+        <h2>Lista de Carros</h2>
+      </div>
 
       <div className="App-container-addcarros">
         <input
@@ -114,14 +114,14 @@ const CarroList = () => {
               <div className="carro-info">
                 {carro.marca} - {carro.modelo} ({carro.ano}) - Chassi: {carro.chassi} - Placa: {carro.placa} - Cor: {carro.cor} - Valor: {carro.valor} - Status: {carro.status}
               </div>
-              
+
               <div className="btn-ex-edit">
                 <button onClick={() => handleDelete(carro.id)}>
-                <FontAwesomeIcon icon={faTrash} className='icon-trash' />
+                  <FontAwesomeIcon icon={faTrash} className='icon-trash' />
                 </button>
 
-                <button onClick={() => handleEdit(carro)}> 
-                <FontAwesomeIcon icon={faPencil} className='icon-pencil' />
+                <button onClick={() => handleEdit(carro)}>
+                  <FontAwesomeIcon icon={faPencil} className='icon-pencil' />
                 </button>
               </div>
             </li>

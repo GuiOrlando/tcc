@@ -1,0 +1,57 @@
+.header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Estilos para o corpo da página */
+  .body {
+    padding: 20px;
+  }
+  
+  /* Estilos para os cards de carros */
+  .car-card {
+    background-color: #fff;
+    border: 1px solid #dfe0e4;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .car-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .car-details {
+    font-size: 1rem;
+    color: #4d5167;
+    margin-bottom: 0.5rem;
+  }
+  
+  .car-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1668e3;
+  }
+  
+  .car-description {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Estilos para o footer */
+  .footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  
