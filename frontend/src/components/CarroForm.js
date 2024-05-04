@@ -110,6 +110,7 @@ const CarroForm = ({ onSubmit, carro }) => {
       )}
 
       <div className={`add-carro-form ${showForm ? 'active' : ''}`}>
+        
         <form onSubmit={handleSubmit}>
           <label>
             <span>Marca:</span>
@@ -124,6 +125,7 @@ const CarroForm = ({ onSubmit, carro }) => {
               ))}
             </select>
           </label>
+
           <label>
             <span>Modelo:</span>
             <input
@@ -134,6 +136,7 @@ const CarroForm = ({ onSubmit, carro }) => {
               required
             />
           </label>
+
           <label>
             <span>Ano:</span>
             <select
@@ -147,6 +150,7 @@ const CarroForm = ({ onSubmit, carro }) => {
               ))}
             </select>
           </label>
+
           <label>
             <span>Chassi:</span>
             <input
@@ -158,6 +162,7 @@ const CarroForm = ({ onSubmit, carro }) => {
               required
             />
           </label>
+
           <label>
             <span>Placa:</span>
             <input
@@ -170,6 +175,7 @@ const CarroForm = ({ onSubmit, carro }) => {
               required
             />
           </label>
+
           <label>
             <span>Cor:</span>
             <input
@@ -180,6 +186,7 @@ const CarroForm = ({ onSubmit, carro }) => {
               required
             />
           </label>
+
           <label>
             <span>Valor:</span>
             <input
@@ -190,6 +197,7 @@ const CarroForm = ({ onSubmit, carro }) => {
               required
             />
           </label>
+
           <label>
             <span>Status:</span>
             <select
@@ -205,7 +213,7 @@ const CarroForm = ({ onSubmit, carro }) => {
             </select>
           </label>
 
-          <div className="btn-ex-edit">
+          <div className="btn-save-close">
             <button type="submit" className="salvar-button">Salvar</button>
             <button type="button" onClick={handleToggleForm} className="fechar-button">Fechar</button>
           </div>

@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-=======
-/* Estilos para o header */
-*{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
->>>>>>> 87ba64bcb6c894613c740ef979ca65a1fe2e1245
 .header {
     background-color: #000;
     color: #fff;
@@ -57,10 +50,6 @@
     color: #fff;
     padding: 20px;
     text-align: center;
-<<<<<<< HEAD
-=======
-    position: fixed;
->>>>>>> 87ba64bcb6c894613c740ef979ca65a1fe2e1245
     left: 0;
     bottom: 0;
     width: 100%;

@@ -173,7 +173,7 @@ const CarroEditForm = ({ onSubmit, carro, onClose }) => {
             </select>
           </label>
           
-          <div className="btn-ex-edit">
+          <div className="btn-save-close">
             <button type="submit" className="salvar-button">Salvar</button>
             <button type="button" onClick={onClose} className="fechar-button">Fechar</button>
           </div>

@@ -1,14 +1,20 @@
-body {
+.carrolist-container {
+    background-color: #000;
     width: 100%;
-    height: 890px; 
+    height: 100vh;
 }
 
 /* Estilos do H1 "Alucar"*/
-.list-title h1 {
-    font-family: Arial, sans-serif;
+.logo-text {
     text-align: center;
     padding: 25px;
-    margin: 21px;
+    margin: 0%;
+    color: #FFF;
+    font-weight: 100;
+}
+
+.logo-text span {
+    text-shadow: 0 0 2px #FECC00, 0 0 2px #FECC00, 0 0 2px #FECC00, 0 0 2px #FECC00, 0 0 2px #FECC00;
 }
 
 /* Estilos do H2 "Lista de Carros"*/
@@ -17,14 +23,15 @@ body {
     margin-bottom: 10px;
     margin-left: 20px;
     font-family: Arial, sans-serif;
+    color: #FFF;
 }
 
 /* Estilos do container de carros*/
 .App-container-addcarros {
-    margin: 20px 10px;
+    margin: 20px 20px;
     border-radius: 8px;
     background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px #FECC00;
     position: relative;
 }
 
@@ -36,50 +43,32 @@ body {
 
 .App-container-addcarros input[type='text'],
 .App-container-addcarros select {
-    width: 100%;
+    width: 98%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin: 10px 10px 10px 0;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
-/* Mais estilos do container de carros adicionados*/
-.App-container-addcarros ul {
-    list-style-type: none;
-    padding: 0px;
-}
-
-/* Organização e estilização dos atributos dos veiculos*/
-.App-container-addcarros li {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #fff;
-    box-shadow: 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* Alinhar Carros adicionados na esquerda*/
-.App-container-addcarros .carro-info {
-    align-items: left;
-}
-
 /* Estilização dos botões para editar ou excluir carros adicionados*/
-.App-container-addcarros .btn-ex-edit {
-    align-items: center;
+.App-container-addcarros .btn-save-close {
+    align-items: right;
     justify-content: flex-end;
 }
 
-.App-container-addcarros .btn-ex-edit button {
+.App-container-addcarros .btn-save-close button {
     margin: 5px 5px ; 
 }
-  
 
-.App-container-addcarros li button {
+/* Estilos dos botões de salvar e fechar dos formularios para adicionar carros ou editar*/
+.btn-salvar-form {
+    margin-left: 40%;
+    width: 20%;
+}
+
+.salvar-button, 
+.fechar-button {
     padding: 8px 16px;
     cursor: pointer;
     border: none;
@@ -87,24 +76,26 @@ body {
     background-color: #FECC00;
     color: #000;
     transition: 0.3s;
- }
+}
   
-.App-container-addcarros li button.active {
+.salvar-button:hover, 
+.fechar-button:hover {
     background-color: #b89302;
 }
   
-.App-container-addcarros li button:hover {
-    background-color: #b89302;
+/* Estilização dos botões feitos para escolher a pagina*/
+.pagination {
+    position: sticky;
+    bottom: 0;
+    padding: 10px 0;
 }
 
-/* Estilização dos botões feitos para escolher a pagina*/
-.App-container-addcarros .pagination {
-    margin-top: 20px;
+.pagination {
     display: flex;
     justify-content: center;
   }
   
-.App-container-addcarros .pagination button {
+.pagination button {
     margin-right: 5px;
     padding: 8px 16px;
     cursor: pointer;
@@ -115,15 +106,15 @@ body {
     transition: 0.3s;
 }
   
-.App-container-addcarros .pagination button.active {
+.pagination button.active {
     background-color: #b89302;
 }
   
-.App-container-addcarros .pagination button:hover {
+.pagination button:hover {
     background-color: #b89302;
 }
   
-.App-container-addcarros .pagination button.hide {
+.pagination button.hide {
     display: none;
 }
 
@@ -181,29 +172,7 @@ body {
     pointer-events: auto;
 }
 
-/* Estilos dos botões de salvar e fechar dos formularios para adicionar carros ou editar*/
-.btn-salvar-form {
-    margin-left: 40%;
-    width: 20%;
-}
-
-.salvar-button, 
-.fechar-button {
-    padding: 8px 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    background-color: #FECC00;
-    color: #000;
-    transition: 0.3s;
-}
-  
-.salvar-button:hover, 
-.fechar-button:hover {
-    background-color: #b89302;
-}
-
-/* Estilização dos formulários de editar e adicionar carros*/
+/* Estilização dos formulários de editar carros*/
 .form-background {
     position: fixed;
     top: 0;
@@ -214,3 +183,54 @@ body {
     z-index: 1;
 }
 
+.table-container {
+    overflow-x: auto;
+    margin: 0 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 15px 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #fff;
+    width: 12%;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.btn-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-actions button {
+    margin-left: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #FECC00;
+    color: #000;
+    transition: 0.3s;
+}
+
+.btn-actions button.active {
+    background-color: #b89302;
+}
+
+.btn-actions button:hover {
+    background-color: #b89302;
+}
