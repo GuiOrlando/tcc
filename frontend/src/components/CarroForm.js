@@ -1,4 +1,3 @@
-// CarroForm.js
 import React, { useState, useEffect } from 'react';
 import { addCarro, getAllCarros } from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,6 +11,7 @@ const CarroForm = ({ onSubmit, carro }) => {
   const [placa, setPlaca] = useState(carro ? carro.placa : '');
   const [cor, setCor] = useState(carro ? carro.cor : '');
   const [valor, setValor] = useState(carro ? carro.valor : '');
+  const [descricao, setDescricao] = useState(carro ? carro.descricao : '');
   const [status, setStatus] = useState(carro ? carro.status : '');
   const [carros, setCarros] = useState([]);
   const [page, setPage] = useState(1);
@@ -60,6 +60,7 @@ const CarroForm = ({ onSubmit, carro }) => {
     setPlaca('');
     setCor('');
     setValor('');
+    setDescricao('');
     setStatus('');
   };
 
@@ -81,7 +82,16 @@ const CarroForm = ({ onSubmit, carro }) => {
       return;
     }
 
-    const newCarro = { marca, modelo, ano, chassi, placa, cor, valor, status };
+    const validValue = /^\d+(\.\d{1,2})?$/.test(valor);
+
+    if (!validValue) {
+      alert('O valor inserido não é válido.');
+      return;
+    }
+
+    const formattedValue = parseFloat(valor).toFixed(2);
+
+    const newCarro = { marca, modelo, ano, chassi, placa, cor, valor, descricao, status };
 
     try {
       await addCarro(newCarro);
@@ -132,7 +142,7 @@ const CarroForm = ({ onSubmit, carro }) => {
               type="text"
               placeholder='Ex: Onix, Gol'
               value={modelo}
-              onChange={(e) => setModelo(e.target.value)}
+              onChange={(e) => setModelo(e.target.value.toUpperCase())}
               required
             />
           </label>
@@ -182,7 +192,7 @@ const CarroForm = ({ onSubmit, carro }) => {
               type="text"
               placeholder='Ex: Prata'
               value={cor}
-              onChange={(e) => setCor(e.target.value)}
+              onChange={(e) => setCor(e.target.value.toUpperCase())}
               required
             />
           </label>
@@ -194,6 +204,16 @@ const CarroForm = ({ onSubmit, carro }) => {
               placeholder='R$'
               value={valor}
               onChange={(e) => setValor(e.target.value)}
+              required
+            />
+          </label>
+
+          <label>
+            <span>Descrição:</span>
+            <input
+              type="text"
+              value={descricao}
+              onChange={(e) => setDescricao(e.target.value)}
               required
             />
           </label>

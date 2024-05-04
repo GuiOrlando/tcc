@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { deleteCarro, getAllCarros } from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faTrash, faInfo } from '@fortawesome/free-solid-svg-icons';
 import CarroForm from '../components/CarroForm';
 import CarroEditForm from '../components/CarroEditForm';
+import CarroInfo from '../components/CarroInfo';
 import '../pageStyle/CarroList.css';
 
 const CarroList = () => {
@@ -14,6 +15,7 @@ const CarroList = () => {
   const [carrosPerPage] = useState(8);
   const [searchInput, setSearchInput] = useState('');
   const [filteredCarros, setFilteredCarros] = useState([]);
+  const [carroSelecionado, setCarroSelecionado] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,6 +63,10 @@ const CarroList = () => {
     setEditFormVisible(false);
   };
 
+  const handleCarroInfo = (carro) => {
+    setCarroSelecionado(carro);
+  };
+
   // Get current cars
   const indexOfLastCar = currentPage * carrosPerPage;
   const indexOfFirstCar = indexOfLastCar - carrosPerPage;
@@ -89,7 +95,7 @@ const CarroList = () => {
     <div className="carrolist-container">
       <div className="list-title">
         <h1 className='logo-text'>
-        <span>A </span><span>L </span><span>U </span><span>C </span><span>A </span><span>R</span>
+          <span>A </span><span>L </span><span>U </span><span>C </span><span>A </span><span>R</span>
         </h1>
         {editFormVisible && editCarroData ? (
           <div>
@@ -110,21 +116,23 @@ const CarroList = () => {
           value={searchInput}
           onChange={handleSearch}
         />
+
         <div className="table-container">
           <table>
             <thead>
               <tr>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Ano</th>
-                <th>Chassi</th>
-                <th>Placa</th>
-                <th>Cor</th>
-                <th>Valor</th>
-                <th>Status</th>
-                <th>Ações</th>
+                <th style={{ width: '10%' }}>Marca</th>
+                <th style={{ width: '10%'}}>Modelo</th>
+                <th style={{ width: '6%' }}>Ano</th>
+                <th style={{ width: '15%' }}>Chassi</th>
+                <th style={{ width: '10%' }}>Placa</th>
+                <th style={{ width: '15%' }}>Cor</th>
+                <th style={{ width: '10%' }}>Valor</th>
+                <th style={{ width: '10%' }}>Status</th>
+                <th style={{ width: '15%' }}>Ações</th>
               </tr>
             </thead>
+
             <tbody>
               {currentCarros.map((carro) => (
                 <tr key={carro.id}>
@@ -134,10 +142,13 @@ const CarroList = () => {
                   <td>{carro.chassi}</td>
                   <td>{carro.placa}</td>
                   <td>{carro.cor}</td>
-                  <td>{(new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(carro.valor))}</td>
+                  <td>{carro.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
                   <td>{carro.status}</td>
                   <td>
                     <div className='btn-actions'>
+                      <button onClick={() => handleCarroInfo(carro)}>
+                        <FontAwesomeIcon icon={faInfo} className="icon-info" />
+                      </button>
                       <button onClick={() => handleDelete(carro.id)}>
                         <FontAwesomeIcon icon={faTrash} className="icon-trash" />
                       </button>
@@ -149,9 +160,14 @@ const CarroList = () => {
                 </tr>
               ))}
             </tbody>
+
           </table>
         </div>
       </div>
+
+      {carroSelecionado && (
+        <CarroInfo carro={carroSelecionado} onClose={() => setCarroSelecionado(null)} />
+      )}
 
       <div className="pagination">
         {carros.length > 0 && (

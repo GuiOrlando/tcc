@@ -1,4 +1,3 @@
-// CarroEditForm.js
 import React, { useState, useEffect } from 'react';
 import { editCarro, getAllCarros } from '../services/api';
 
@@ -10,6 +9,7 @@ const CarroEditForm = ({ onSubmit, carro, onClose }) => {
   const [placa, setPlaca] = useState(carro ? carro.placa : '');
   const [cor, setCor] = useState(carro ? carro.cor : '');
   const [valor, setValor] = useState(carro ? carro.valor : '');
+  const [descricao, setDescricao] = useState(carro ? carro.descricao : '');
   const [status, setStatus] = useState(carro ? carro.status : '');
   const [carros, setCarros] = useState([]);
   
@@ -56,7 +56,16 @@ const CarroEditForm = ({ onSubmit, carro, onClose }) => {
       return;
     }
 
-    const editedCarro = { marca, modelo, ano, chassi, placa, cor, valor, status };
+    const validValue = /^\d+(\.\d{1,2})?$/.test(valor);
+
+    if (!validValue) {
+      alert('O valor inserido não é válido.');
+      return;
+    }
+
+    const formattedValue = parseFloat(valor).toFixed(2);
+
+    const editedCarro = { marca, modelo, ano, chassi, placa, cor, valor, descricao, status };
 
     try {
       await editCarro(carro.id, editedCarro);
@@ -78,6 +87,7 @@ const CarroEditForm = ({ onSubmit, carro, onClose }) => {
 
       <div className='form-background'></div>
       <div className={`add-carro-form active`}>
+
         <form onSubmit={handleSubmit}>
           <label>
             <span>Marca:</span>
@@ -92,6 +102,7 @@ const CarroEditForm = ({ onSubmit, carro, onClose }) => {
               ))}
             </select>
           </label>
+
           <label>
             <span>Modelo:</span>
             <input
@@ -102,6 +113,7 @@ const CarroEditForm = ({ onSubmit, carro, onClose }) => {
               required
             />
           </label>
+
           <label>
             <span>Ano:</span>
             <select
@@ -115,6 +127,7 @@ const CarroEditForm = ({ onSubmit, carro, onClose }) => {
               ))}
             </select>
           </label>
+
           <label>
             <span>Chassi:</span>
             <input
@@ -126,6 +139,7 @@ const CarroEditForm = ({ onSubmit, carro, onClose }) => {
               required
             />
           </label>
+
           <label>
             <span>Placa:</span>
             <input
@@ -138,6 +152,7 @@ const CarroEditForm = ({ onSubmit, carro, onClose }) => {
               required
             />
           </label>
+
           <label>
             <span>Cor:</span>
             <input
@@ -148,6 +163,7 @@ const CarroEditForm = ({ onSubmit, carro, onClose }) => {
               required
             />
           </label>
+
           <label>
             <span>Valor:</span>
             <input
@@ -158,6 +174,17 @@ const CarroEditForm = ({ onSubmit, carro, onClose }) => {
               required
             />
           </label>
+
+          <label>
+            <span>Descrição:</span>
+            <input
+              type="text"
+              value={descricao}
+              onChange={(e) => setDescricao(e.target.value)}
+              required
+            />
+          </label>
+
           <label>
             <span>Status</span>
             <select
