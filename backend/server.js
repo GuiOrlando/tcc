@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const carrosController = require('./controllers/carrosController');
 const userController = require('./controllers/usersController');
+const authMiddleware = require('./middleware/authMiddleware');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cors({
 // Rotas
 app.use('/api', carrosController);
 app.use('/api', userController);
+app.use('/api/users', authMiddleware);
 
 // Porta do servidor
 const PORT = process.env.PORT || 5000;

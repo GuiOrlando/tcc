@@ -1,6 +1,6 @@
 const connection = require('../db');
+const bcrypt = require('bcryptjs');
 
-// Função para listar todos os usuários
 function listarUsuarios() {
   return new Promise((resolve, reject) => {
     connection.query('SELECT * FROM users', (error, results) => {
@@ -13,17 +13,13 @@ function listarUsuarios() {
   });
 }
 
-// Função para adicionar um novo usuário
 function adicionarUsuario(usuario) {
   return new Promise((resolve, reject) => {
-    // Verificar se o email ou CPF já existe antes de inserir
-    connection.query('SELECT * FROM users WHERE email = ? OR cpf = ?', [usuario.email, usuario.cpf], (error, results) => {
-      if (error) {
-        reject(error);
-      } else if (results.length > 0) {
-        // Se já existir um usuário com o mesmo email ou CPF, retornar erro
-        reject(new Error('Email ou CPF já cadastrado.'));
+    bcrypt.hash(usuario.senha, 10, (hashError, hashedPassword) => {
+      if (hashError) {
+        reject(hashError);
       } else {
+        usuario.senha = hashedPassword; // Sobrescreve a senha não criptografada com o hash criptografado
         connection.query('INSERT INTO users SET ?', usuario, (error, results) => {
           if (error) {
             reject(error);
@@ -36,7 +32,20 @@ function adicionarUsuario(usuario) {
   });
 }
 
+function buscarUsuarioPorEmail(email) {
+  return new Promise((resolve, reject) => {
+    connection.query('SELECT * FROM users WHERE email = ?', [email], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results[0]);
+      }
+    });
+  });
+}
+
 module.exports = {
   listarUsuarios,
   adicionarUsuario,
+  buscarUsuarioPorEmail,
 };

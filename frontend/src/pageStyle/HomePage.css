@@ -1,62 +1,146 @@
-.header {
-    background-color: #000;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  /* Estilos para o corpo da página */
-  .body {
-    padding: 20px;
-  }
-  
-  /* Estilos para os cards de carros */
-  .car-card {
-    background-color: #fff;
-    border: 1px solid #dfe0e4;
-    border-radius: 1rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-  }
+/* Estilos globais */
+/*
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+}
+*/
 
-  .car-card:hover {
-    border-color: #FECC00;
-  }
-  
-  .car-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  .car-details {
-    font-size: 1rem;
-    color: #4d5167;
-    margin-bottom: 0.5rem;
-  }
-  
-  .car-price {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #1668e3;
-  }
-  
-  .car-description {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Estilos para o footer */
-  .footer {
-    position: fixed;
-    background-color: #000;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-  }
-  
+/* Container principal */
+.alucar-container {
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+.alucar-header {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.alucar-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.alucar-nav a {
+  color: #fff;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.alucar-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Body */
+.alucar-body {
+  flex: 1;
+  padding-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Grid de carros */
+.alucar-car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Cartão de carro */
+.alucar-car-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.alucar-car-card:hover {
+  box-shadow: 0 0 10px #FECC00;
+  transform: scale(1.05);
+}
+
+.alucar-car-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alucar-car-details {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alucar-car-price {
+  font-size: 1.25rem;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.alucar-car-description {
+  font-size: 1rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alucar-car-icon {
+  margin-right: 0.5rem;
+}
+
+/* Footer */
+.alucar-footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.alucar-reserve-box {
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  width: 50%;  
+}
+
+

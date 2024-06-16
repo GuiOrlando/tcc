@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signup, getAllUsers } from '../services/api'; // Certifique-se de importar a função signup do seu api.js
+import { signup, getAllUsers } from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faEye, faEyeSlash, faIdCard, faHome, faMailReply } from '@fortawesome/free-solid-svg-icons';
-import "../pageStyle/Signup.css"
+import "../pageStyle/Signup.css";
 
 const Signup = () => {
     const [nome, setNome] = useState('');
@@ -63,7 +63,7 @@ const Signup = () => {
             await signup(newUser);
             alert('Cadastro realizado com sucesso!');
             clearFields();
-            fetchUsers(); // Atualizar a lista de usuários após o cadastro
+            navigate('/'); // Redirecione para a página de login após o cadastro
         } catch (error) {
             console.error(error);
             alert('Erro ao cadastrar. Por favor, tente novamente.');
