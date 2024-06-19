@@ -6,12 +6,12 @@ const saveToken = (token) => {
 };
 
 // Função para obter o token do localStorage
-const getToken = () => {
+export const getToken = () => {
   return localStorage.getItem('token');
 };
 
 // Função para remover o token do localStorage
-const removeToken = () => {
+export const removeToken = () => {
   localStorage.removeItem('token');
 };
 
@@ -53,7 +53,6 @@ const getAuthHeaders = () => {
 };
 
 // Operações relacionadas aos carros
-
 export const getAllCarros = async () => {
   const response = await fetch(`${API_URL}/carros`, {
     headers: getAuthHeaders(),
@@ -86,7 +85,6 @@ export const deleteCarro = async (id) => {
 };
 
 // Operações relacionadas aos usuários
-
 export const signup = async (usuario) => {
   await fetch(`${API_URL}/users`, {
     method: 'POST',
