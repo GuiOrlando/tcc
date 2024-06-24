@@ -67,15 +67,12 @@ const CarroList = () => {
     setCarroSelecionado(carro);
   };
 
-  // Get current cars
   const indexOfLastCar = currentPage * carrosPerPage;
   const indexOfFirstCar = indexOfLastCar - carrosPerPage;
   const currentCarros = filteredCarros.slice(indexOfFirstCar, indexOfLastCar);
 
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // Search
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setSearchInput(searchTerm);

@@ -33,6 +33,18 @@ body {
   z-index: 1000;
 }
 
+.logout-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.logout-button:hover {
+  text-decoration: none;
+}
+
 .alucar-logo {
   font-size: 2rem;
   font-weight: bold;

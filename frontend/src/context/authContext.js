@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (!isLoggedIn && !window.location.pathname.startsWith('/cadastro')) {
-      navigate('/login');
+      navigate('/');
     }
   }, [isLoggedIn, navigate]);
 
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
   const handleLogout = () => {
     logout();
     setIsLoggedIn(false);
-    navigate('/login');
+    navigate('/');
   };
 
   return (

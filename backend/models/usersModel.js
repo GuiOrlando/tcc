@@ -19,7 +19,7 @@ function adicionarUsuario(usuario) {
       if (hashError) {
         reject(hashError);
       } else {
-        usuario.senha = hashedPassword; // Sobrescreve a senha não criptografada com o hash criptografado
+        usuario.senha = hashedPassword;
         connection.query('INSERT INTO users SET ?', usuario, (error, results) => {
           if (error) {
             reject(error);

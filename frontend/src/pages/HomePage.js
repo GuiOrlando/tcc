@@ -3,9 +3,11 @@ import { getAllCarros } from '../services/api';
 import '../pageStyle/HomePage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
   const [carros, setCarros] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,8 +20,13 @@ const HomePage = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // animação de rolagem suave
+      behavior: 'smooth'
     });
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    navigate('/');
   };
 
   return (
@@ -27,8 +34,8 @@ const HomePage = () => {
       <header className="alucar-header">
         <div className="alucar-logo" onClick={scrollToTop}>A L U C A R</div>
         <nav className="alucar-nav">
-          <a href="#carros" >Conta</a>
-          <a href="/">Sair</a>
+          <a href="#carros">Conta</a>
+          <button className="logout-button" onClick={handleLogout}>Sair</button>
         </nav>
       </header>
       
@@ -48,7 +55,7 @@ const HomePage = () => {
               <p className="alucar-car-description">
                 {carro.modelo} - {carro.ano}
               </p>
-                <button className="alucar-reserve-box">Reservar</button>
+              <button className="alucar-reserve-box">Reservar</button>
             </div>
           ))}
         </div>
