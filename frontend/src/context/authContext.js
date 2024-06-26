@@ -1,3 +1,4 @@
+/*
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { isAuthenticated, login, logout } from '../services/api';
@@ -36,3 +37,4 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   return useContext(AuthContext);
 };
+*/

@@ -1,3 +1,4 @@
+
 const connection = require('../db');
 const bcrypt = require('bcryptjs');
 
@@ -19,7 +20,7 @@ function adicionarUsuario(usuario) {
       if (hashError) {
         reject(hashError);
       } else {
-        usuario.senha = hashedPassword;
+        usuario.senha = hashedPassword; // Sobrescreve a senha não criptografada com o hash criptografado
         connection.query('INSERT INTO users SET ?', usuario, (error, results) => {
           if (error) {
             reject(error);

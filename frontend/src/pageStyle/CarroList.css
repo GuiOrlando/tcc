@@ -234,5 +234,11 @@ tr:nth-child(even) {
     padding: 0 4px;
 }
 
+.alucar-reserve-box[disabled] {
+    /* Estilos para botão "Reservado" */
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+  }
 
   

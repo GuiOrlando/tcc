@@ -63,7 +63,7 @@ const Signup = () => {
             await signup(newUser);
             alert('Cadastro realizado com sucesso!');
             clearFields();
-            navigate('/');
+            navigate('/'); // Redirecione para a página de login após o cadastro
         } catch (error) {
             console.error(error);
             alert('Erro ao cadastrar. Por favor, tente novamente.');
